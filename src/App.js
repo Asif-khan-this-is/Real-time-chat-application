@@ -1,20 +1,36 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import "./App.css";
+import { useState } from "react";
+import Navbar from "./components/Navbar";
+import Front from './pages/Startpage';
+import Home from './pages/Home'; // Import the Home page
+import './index.css';
 
 function App() {
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [isHome, setIsHome] = useState(false); // Track if we are on the Home page
+
+  const handleSignIn = () => {
+    setIsSignedIn(true);
+    setIsHome(true); // Go to home page after signing in
+  };
+
+  const handleSignOut = () => {
+    setIsSignedIn(false);
+    setIsHome(false); // Go back to the Front page after signing out
+  };
+
   return (
-    <div className="App">
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-      </Routes>
-    </div>
+    <>
+      {isSignedIn ? (
+        <>
+          <Navbar onSignOut={handleSignOut} />
+         <Home /> 
+        </>
+      ) : (
+        <Front onSignIn={handleSignIn} />
+      )}
+    </>
   );
 }
 
 export default App;
+

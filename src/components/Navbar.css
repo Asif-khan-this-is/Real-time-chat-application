@@ -1,0 +1,22 @@
+
+nav,.nav-links{
+    display: flex;
+}
+
+nav{
+    justify-content: space-around;
+    padding: 15px;
+    background-color: bisque;
+}
+.navbar-logo a,.nav-links a{
+    text-decoration: none;
+    color:black;
+    font-size: 20px;
+
+}
+.nav-links{
+    list-style-type: none;
+    gap:25px;
+}
+
+
