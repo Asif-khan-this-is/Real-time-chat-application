@@ -1,18 +1,38 @@
 import React from 'react';
+import { ReactComponent as HomeIcon } from '../assets/home.svg';
+import { ReactComponent as MessageIcon } from '../assets/message.svg';
+import { ReactComponent as ProfileIcon } from '../assets/profile.svg';
+import { ReactComponent as LogoutIcon } from '../assets/logout.svg';
 import './Navbar.css';
 
-const Navbar = ({onSignOut}) => {
+const Navbar = ({ onSignOut }) => {
   return (
     <nav>
       <div className="navbar-logo">
-        <a href="/" aria-label="Home">Chat App</a>
+        <h1 href="/" aria-label="Home">Messenger</h1>
+      </div>
+      <div className="search-bar">
+        <input type="text" placeholder="Search..." aria-label="Search" />
       </div>
       <div className="nav-items">
         <ul className='nav-links'>
-          <li><a href="/about" aria-label="About">Home</a></li>
-          <li><a href="/contact" aria-label="Contact">Messages</a></li>
-          <li className='logout-btn' ><a onClick={onSignOut} href="/register" aria-label="Register">Logout</a></li>
-         </ul>
+          <li className='items-div'>
+            <a href="#" aria-label="Home">Home</a>
+            <HomeIcon className="nav-icon" />
+          </li>
+          <li className='items-div'>
+            <a href="#" aria-label="messages">Messages</a>
+            <MessageIcon className="nav-icon" />
+          </li>
+          <li className='logout-btn items-div' >
+            <a onClick={onSignOut} href="#" aria-label="Profile">Profile</a>
+            <ProfileIcon className="nav-icon" />
+          </li>
+          <li className='items-div'>
+            <a href="#" aria-label="logout">Logout</a>
+            <LogoutIcon className="nav-icon" />
+          </li>
+        </ul>
       </div>
     </nav>
   );

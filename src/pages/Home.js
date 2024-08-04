@@ -4,8 +4,8 @@ import Chat from "../components/Chat";
 const Home = () => {
   return (
     <div className="home">
-      <h1>Chat Room</h1>
-      <Chat />
+      {/* <h1>Chat Room</h1> */}
+      {/* <Chat /> */}
     </div>
   );
 };
