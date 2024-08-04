@@ -25,11 +25,11 @@ const Navbar = ({ onSignOut }) => {
             <MessageIcon className="nav-icon" />
           </li>
           <li className='logout-btn items-div' >
-            <a onClick={onSignOut} href="#" aria-label="Profile">Profile</a>
+            <a  href="#" aria-label="Profile">Profile</a>
             <ProfileIcon className="nav-icon" />
           </li>
-          <li className='items-div'>
-            <a href="#" aria-label="logout">Logout</a>
+          <li onClick={onSignOut} className='items-div'>
+            <a  href="#" aria-label="Logout">Logout</a>
             <LogoutIcon className="nav-icon" />
           </li>
         </ul>
