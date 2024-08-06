@@ -1,3 +1,48 @@
+
+body{
+    background: #74ebd5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #606fb5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ACB6E5, #a6d3cb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+main{
+    display: flex;
+    gap:10px;
+    /* border: 2px solid black; */
+    /* justify-content: center; */
+    padding:0 15px;
+}
+
+.left{
+    width: 60%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 80px;
+}
+.left-content{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    color: whitesmoke;
+    /* border: 2px solid black; */
+    width: 100%;
+   
+}
+.left-content-top{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.left-heading{
+    font-size: 55px;
+}
+.left-content-top span{
+    font-weight: bold;
+}
+
 .right{
     width: 50%;
     /* border: 2px solid red; */
@@ -10,7 +55,7 @@
     padding: 40px;
     flex-direction: column;
     gap:20px;
-    width: 65%;
+    width: 100%;
     border: 2px solid black;
     border-radius: 40px;
     background-color: white;
@@ -57,7 +102,13 @@ form{
 }
 .buttons{
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    flex-direction: column;
+    gap:20px;
+}
+.buttons a{
+    text-decoration: none;
+    color:black
 }
 /* Add these styles to your login.css */
 

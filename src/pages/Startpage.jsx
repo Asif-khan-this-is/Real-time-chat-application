@@ -1,8 +1,8 @@
 import React from 'react';
 import './Front.css';
 import Login from './Login';
-
-const Front = ({ onSignIn }) => {
+import SignUp from './SignUp';
+const Front = () => {
   return (
     <main>
       <div className="left">
@@ -15,9 +15,6 @@ const Front = ({ onSignIn }) => {
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo doloribus, magni praesentium cupiditate at cumque error mollitia molestiae pariatur quae quas a sit alias ratione exercitationem? Aliquam excepturi cum obcaecati sit! Dicta atque, ducimus deserunt, assumenda, impedit omnis accusamus eaque officia quis pariatur quaerat recusandae cum sequi fuga soluta eius!
           </p>
         </div>
-      </div>
-      <div className="right">
-        <Login onSignIn={onSignIn} /> {/* Passes onSignIn to Login */}
       </div>
     </main>
   );

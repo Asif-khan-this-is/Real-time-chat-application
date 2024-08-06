@@ -1,80 +1,86 @@
 import React, { useState } from 'react';
-import './login.css';
+import { Link, useNavigate } from 'react-router-dom';
+import './login.css'; 
+import axios from 'axios';
+const Login = () => {
+  const [data, setData] = useState({
+    email: "",
+    password: ""
+  });
+  const [error, setError] = useState('');
+  const navigate = useNavigate();
 
+  const handleChange = ({ currentTarget: input }) => {
+    setData({ ...data, [input.name]: input.value });
+  };
 
-
-const Login = ({ onSignIn }) => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [rememberMe, setRememberMe] = useState(false);
-  const [action , setAction] = useState('Sign In !')
-  const [email, setEmail] = useState('');
-  // const navigate = useNavigate();
-
-  const handleSignIn = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    if (username && password) {
-      onSignIn();
+    try {
+      const url = "http://localhost:8080/api/auth";
+      const { data: res } = await axios.post(url, data);
+      localStorage.setItem('token', res.data);
+      navigate("/");
+    } catch (error) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        setError(error.response.data.message);
+      }
     }
   };
 
   return (
-    <div className="right-content">
-      <form onSubmit={handleSignIn}>
+    <main>
+      <div className="left">
+        <div className="left-content">
+          <div className="left-content-top">
+            <h1 className='left-heading'>Welcome</h1>
+            <span>to Real Chat App</span>
+          </div>
+          <p>
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo doloribus, magni praesentium cupiditate at cumque error mollitia molestiae pariatur quae quas a sit alias ratione exercitationem? Aliquam excepturi cum obcaecati sit! Dicta atque, ducimus deserunt, assumenda, impedit omnis accusamus eaque officia quis pariatur quaerat recusandae cum sequi fuga soluta eius!
+          </p>
+        </div>
+      </div>
+      <div className='right'>
+      <div className="right-content">
+      <form onSubmit={handleSubmit}>
         <div className="form-heading">
-          <h1>{action}</h1>
-          {action === "Sign In !"?<p>Sign in to your account if you're an existing user</p>: <p>Create a new Account</p> }
-          
+          <h1>Sign In</h1>
+          <p>Access Your Account Here</p>
         </div>
         <div className="credentials">
-          {action === "Sign In !" ?<div></div>:<input
-            type="email"
-            name='email'
-            id="email"
-            placeholder='email'
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-          />}
           <input
-            type="text"
-            name='username'
-            id="username"
-            placeholder='Username'
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
+            type="email"
+            name="email"
+            id="email"
+            placeholder="Email"
+            value={data.email}
+            onChange={handleChange}
           />
           <input
             type="password"
-            name='password'
+            name="password"
             id="password"
-            placeholder='Password'
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+            value={data.password}
+            onChange={handleChange}
           />
         </div>
-        {action === "Sign Up !" ?<div></div>:<div className="forgot-pw">
-          <div className="remember">
-            <input
-              type='checkbox'
-              id="rememberMe"
-              name='rememberMe'
-              checked={rememberMe}
-              onChange={(e) => setRememberMe(e.target.checked)}
-            />
-            <label htmlFor="rememberMe">Remember Me</label>
-          </div>
-          <a href="/forgot-password">Forgot Password?</a>
-        </div>}
-        
-        <div className='buttons'><button onClick={()=>setAction("Sign In !")}className={`btn ${action === "Sign In !" ? 'btn-active' : 'btn-inactive'}`}>
-          Sign in
-        </button>
-        <button onClick={()=>setAction("Sign Up !")} className={`btn ${action === "Sign Up !" ? 'btn-active' : 'btn-inactive'}`}>
-          Sign up
-        </button></div>
+        {error && <div className='error_msg'>{error}</div>}
+        <div className="buttons">
+          <button type="submit" className="btn btn-active">
+            Sign In
+          </button>
+        </div>
+        <p className="login-prompt">
+          Don't have an account? <Link to="/signup">Sign Up</Link>
+        </p>
       </form>
-
     </div>
+      </div>
+      
+    </main>
+    
   );
 };
 

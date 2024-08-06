@@ -5,7 +5,7 @@ import { ReactComponent as ProfileIcon } from '../assets/profile.svg';
 import { ReactComponent as LogoutIcon } from '../assets/logout.svg';
 import './Navbar.css';
 
-const Navbar = ({ onSignOut }) => {
+const Navbar = () => {
   return (
     <nav>
       <div className="navbar-logo">
@@ -27,10 +27,6 @@ const Navbar = ({ onSignOut }) => {
           <li className='logout-btn items-div' >
             <a  href="#" aria-label="Profile">Profile</a>
             <ProfileIcon className="nav-icon" />
-          </li>
-          <li onClick={onSignOut} className='items-div'>
-            <a  href="#" aria-label="Logout">Logout</a>
-            <LogoutIcon className="nav-icon" />
           </li>
         </ul>
       </div>

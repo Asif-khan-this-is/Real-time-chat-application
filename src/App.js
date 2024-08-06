@@ -1,36 +1,20 @@
-import { useState } from "react";
-import Navbar from "./components/Navbar";
-import Front from './pages/Startpage';
-import Home from './pages/Home'; // Import the Home page
-import './index.css';
+import React from 'react';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import Main from './components/Main';
+import SignUp from './pages/SignUp';
+import Login from './pages/Login';
 
 function App() {
-  const [isSignedIn, setIsSignedIn] = useState(false);
-  const [isHome, setIsHome] = useState(false); // Track if we are on the Home page
-
-  const handleSignIn = () => {
-    setIsSignedIn(true);
-    setIsHome(true); // Go to home page after signing in
-  };
-
-  const handleSignOut = () => {
-    setIsSignedIn(false);
-    setIsHome(false); // Go back to the Front page after signing out
-  };
-
+  const user = localStorage.getItem("token");
+  console.log("token",user)
   return (
-    <>
-      {isSignedIn ? (
-        <>
-          <Navbar onSignOut={handleSignOut} />
-         <Home /> 
-        </>
-      ) : (
-        <Front onSignIn={handleSignIn} />
-      )}
-    </>
+    <Routes>
+      {user && <Route path="/" exact element={<Main />} />}
+      <Route path="/signup" exact element={<SignUp />} />
+      <Route path="/login" exact element={<Login />} />
+      {/* <Route path="/" element={<Navigate replace to="/login" />} /> */}
+    </Routes>
   );
 }
 
 export default App;
-

@@ -11,7 +11,7 @@ main{
 }
 
 .left{
-    width: 50%;
+    width: 80%;
     /* border: 2px solid red; */
     display: flex;
     justify-content: center;
@@ -25,7 +25,7 @@ main{
     justify-content: center;
     color: whitesmoke;
     /* border: 2px solid black; */
-    width: 80%;
+    width: 100%;
    
 }
 .left-content-top{
