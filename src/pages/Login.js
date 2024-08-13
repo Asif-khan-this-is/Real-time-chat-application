@@ -14,18 +14,25 @@ const Login = () => {
     setData({ ...data, [input.name]: input.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const loginUser = async (data) => {
     try {
       const url = "http://localhost:8080/api/auth";
       const { data: res } = await axios.post(url, data);
       localStorage.setItem('token', res.data);
+      localStorage.setItem('username' , res.user.username)
       navigate("/");
+      // console.log(res.user.username)
     } catch (error) {
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message);
       }
     }
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    await loginUser(data)
+    
   };
 
   return (
