@@ -1,0 +1,41 @@
+
+body{
+    background: #74ebd5;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #606fb5, #74ebd5);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #ACB6E5, #a6d3cb); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    
+}
+main{
+    display: flex;
+    gap:10px;
+}
+
+.left{
+    width: 80%;
+    /* border: 2px solid red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 80px;
+}
+.left-content{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+    justify-content: center;
+    color: whitesmoke;
+    /* border: 2px solid black; */
+    width: 100%;
+   
+}
+.left-content-top{
+    display: flex;
+    flex-direction: column;
+    gap:5px;
+}
+.left-heading{
+    font-size: 55px;
+}
+.left-content-top span{
+    font-weight: bold;
+}
