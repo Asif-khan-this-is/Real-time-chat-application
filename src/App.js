@@ -1,19 +1,39 @@
-import React from 'react';
-import { Route, Routes, Navigate } from 'react-router-dom';
-import Main from './components/Main';
-import SignUp from './pages/SignUp';
-import Login from './pages/Login';
+
+// import './App.css';
+import { Children } from 'react';
+import Dashboard from './modules/Dashboard';
+import Form from './modules/Form';
+import { Routes,Route ,Navigate } from 'react-router-dom';
 
 function App() {
-  const user = localStorage.getItem("token");
-  console.log("token",user)
+  const ProtectedRoute = ({children, auth=false}) =>{
+    const isLoggedIn = localStorage.getItem('user:token') !== null || false
+    if(!isLoggedIn && auth){
+      return <Navigate to={"/users/sign_in"}  />
+    }else if(isLoggedIn && ['/users/sign_in', '/users/sign_up'].includes(window.location.pathname)){
+      return <Navigate to = {'/'}/>
+    }
+    return children
+  }
   return (
     <Routes>
-      {user && <Route path="/" exact element={<Main />} />}
-      <Route path="/signup" exact element={<SignUp />} />
-      <Route path="/login" exact element={<Login />} />
-      {/* <Route path="/" element={<Navigate replace to="/login" />} /> */}
+      <Route path="/" element={
+        <ProtectedRoute auth={true}>
+          <Dashboard/>
+        </ProtectedRoute>
+      } />
+      <Route path="/users/sign_in" element={
+        <ProtectedRoute>
+          <Form isSignin={true}/>
+        </ProtectedRoute>
+      } />
+      <Route path="/users/sign_up" element={
+        <ProtectedRoute>
+          <Form isSignin={false}/>
+        </ProtectedRoute>
+      } />
     </Routes>
+    
   );
 }
 
