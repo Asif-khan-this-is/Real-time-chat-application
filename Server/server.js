@@ -21,9 +21,6 @@ app.use(cors())
 
 // Routes
 const port = process.env.PORT || 8000
-app.get('/', (req, res) => {
-    res.send("Welcome")
-})
 
 app.post('/api/register', async (req, res, next) => {
     try {
