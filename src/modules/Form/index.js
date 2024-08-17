@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import { useNavigate } from "react-router-dom";
-import image from "../../assets/Avatar.svg";
+import image from "../../assets/profile.jpeg";
 
 const Form = ({ isSignin = false }) => {
   const [data, setData] = useState({
