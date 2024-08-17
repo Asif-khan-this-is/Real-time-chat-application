@@ -56,7 +56,11 @@ const Dashboard = () => {
     const navigate = useNavigate()
     const hadnleLogout = () => {
         localStorage.removeItem('user:token')
+        localStorage.removeItem('user:detail')
         navigate('/users/sign_in')
+    }
+    const handleNavigate = () => {
+        navigate('/users/profile')
     }
     return (
         <div className='w-screen flex'>
@@ -65,7 +69,7 @@ const Dashboard = () => {
                     <div className=' rounded-full p-[4px] overflow-hidden'><img className='rounded-full border border-gray-700' src="https://media.licdn.com/dms/image/v2/D5603AQG9tPbPz-iUrQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1709665436580?e=1729123200&v=beta&t=UPWmMD2hHi9B7c29ZVICf0upGIVslA4W4K9QdHmvf0E" width="50" height="50"></img></div>
                     <div className='ml-4 flex flex-col'>
                         <h3 className='text-2xl'>Neeraj</h3>
-                        <p className='text-lg text-gray-500'>My account</p>
+                        <p className='text-lg text-gray-500 cursor-pointer' onClick={() => handleNavigate()}>My account</p>
                     </div>
                     <div className='p-2 cursor-pointer' onClick={()=>hadnleLogout()}>
                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="20" height="20" color="#000000" fill="none">

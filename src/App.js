@@ -4,6 +4,7 @@ import { Children } from 'react';
 import Dashboard from './modules/Dashboard';
 import Form from './modules/Form';
 import { Routes,Route ,Navigate } from 'react-router-dom';
+import Profile from './modules/Profile';
 
 function App() {
   const ProtectedRoute = ({children, auth=false}) =>{
@@ -32,6 +33,7 @@ function App() {
           <Form isSignin={false}/>
         </ProtectedRoute>
       } />
+      <Route path="users/profile" element={<Profile/>}/>
     </Routes>
     
   );
