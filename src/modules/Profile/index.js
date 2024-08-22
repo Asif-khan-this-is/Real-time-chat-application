@@ -48,8 +48,8 @@ const Profile = () => {
                     <div className='flex p-4 w-1/2 rounded-full justify-center overflow-hidden '>
                         <img
                             src={Avatar}
-                            className=' p-2 border border-gray-200 h-full object-cover rounded-full '
-                            width={200}
+                            className=' p-2 border border-gray-200 w-full h-full object-cover rounded-full '
+                            width={20}
                         />
                     </div>
 

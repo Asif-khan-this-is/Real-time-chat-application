@@ -108,7 +108,7 @@ const Form = ({ isSignin = false }) => {
               className="mx-20 mb-3 w-[400px] h-14"
             />
             <Button
-              className="w-[600px] max-w-xs mx-[100px] my-4 h-13 "
+              className=" w-[600px] max-w-xs mx-[128px] my-4 h-13 "
               type="submit"
               label={isSignin ? "Sign in" : "Sign up"}
             />
