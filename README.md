@@ -1,55 +1,83 @@
-# Chat App
-# Overview
-This is a simple chat application that allows users to register, log in, and communicate with each other through conversations. The app provides basic functionalities like user authentication, viewing profile details, and engaging in conversations with other users.
+# Real-Time Chat Website with MERN Stack, Socket.io, Redux Toolkit, and Tailwind CSS
 
-# Features:
-1.User Registration: New users can create an account by providing their full name, email, and password.
-2.User Login: Registered users can log in using their email and password.
-3.Profile Management: Users can view their profile details such as full name and email.
-4.Conversations: Users can start conversations with others and send text messages.
+This is a real-time chat website that allows users to connect with each other and chat in real-time. It was built using the MERN stack (MongoDB, Express.js, React.js, and Node.js), Socket.io, Redux Toolkit, and Tailwind CSS. 
 
-# Technologies Used :
-1.Frontend: React, Tailwind CSS
-2.Backend: Node.js, Express.js
-3.Database: MongoDB
-4.Authentication: JSON Web Tokens (JWT)
+- If you liked it then give this Repository a Star⭐
+- Youtube Demo : <a target="__blanck" href="https://youtu.be/11oZj2jBhOE">Click On Me</a>
 
-# Installation
-- Clone the repository:
-  git clone https://github.com/yourusername/chat-app.git
+## Technologies Used
 
-- Install dependencies for the backend:
-  cd Real-time-chat-application/Server
-  npm install
+- MERN stack (MongoDB, Express.js, React.js, and Node.js)
+- Socket.io
+- Redux Toolkit
+- Tailwind CSS
 
-- Install dependencies for the frontend:
-  cd ../frontend
-  npm install
+## Features
 
-# Usage
-1.Register: Sign up for a new account using your full name, email, and password.
-2.Login: Log in with your registered email and password.
-3.Profile: View your profile details after logging in.
-4.Conversations: Start a new conversation with other users and exchange messages.
+- Real-time chat: users can send and receive messages in real-time
+- User authentication: users can sign up, log in, and log out using JWT and Google Auth
+- Group creation: users can create chat rooms and invite others to join
+- Notifications: users can receive notifications on new messages
+- Emojis: users can send and receive emojis in messages
+- Profile page where users can update their avatar and display name.
+- Users can create a room to chat with others.
+- Search functionality.
+- Responsive design: the website is optimized for different screen sizes and devices
 
-# Folder Structurw
-Real-time-chat-application/
-│
-├── Server/
-│   ├── models/
-│   ├── routes/
-│   ├── db/
-│   └── server.js
-│
-└── frontend/
-    ├── src/
-    ├── public/
-    └── package.json
+## Configuration and Setup
+In order to run this project locally, simply fork and clone the repository or download as zip and unzip on your machine.
 
-# Contributing
-Contributions are welcome! Please open an issue or submit a pull request with your changes.
+- Open the project in your prefered code editor.
+- Go to terminal -> New terminal (If you are using VS code)
+- Split your terminal into two (run the client on one terminal and the server on the other terminal)
 
-# License
-This project is licensed under the MIT License.
+In the first terminal
+- cd client and create a .env file in the root of your client directory.
+- Supply the following credentials
 
+```
+REACT_APP_GOOGLE_CLIENT_ID = 
+REACT_APP_SERVER_URL='http://localhost:8000'
+```
+
+To get your Google ClientID for authentication, go to the [credential Page ](https://console.cloud.google.com/apis/credentials) (if you are new, then [create a new project first](https://console.cloud.google.com/projectcreate) and follow the following steps;
+
+- Click Create credentials > OAuth client ID.
+- Select the Web application type.
+- Name your OAuth client and click Create
+- Remember to provide your domain and redirect URL so that Google identifies the origin domain to which it can display the consent screen. In development, that is going to be `http://localhost:3000` and `http://localhost:3000/login`
+- Copy the Client ID and assign it to the variable `REACT_APP_GOOGLE_CLIENT_ID` in your .env file
+
+```
+$ cd client
+$ npm install (to install client-side dependencies)
+$ npm start (to start the client)
+```
+In the second terminal
+- cd server and create a .env file in the root of your server directory.
+- Supply the following credentials
+
+```
+PORT=8000
+URL=
+SECRET=
+CLIENT_ID=
+BASE_URL="http://localhost:3000"
+```
+```
+$ cd server
+$ npm install (to install server-side dependencies)
+& npm start (to start the server)
+```
+
+
+## Contributing
+
+Contributions to this project are welcome! If you find a bug or want to add a feature, please submit an issue or a pull request. To contribute, follow these steps:
+
+1. Fork the repository
+2. Create a new branch for your feature: `git checkout -b my-new-feature`
+3. Make changes and commit them: `git commit -m 'Add some feature'`
+4. Push your branch to your forked repository: `git push origin my-new-feature`
+5. Create a Pull Request
 
