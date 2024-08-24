@@ -79,11 +79,11 @@ function Regsiter() {
     isValid()
   }, [])
   return (
-    <div className='bg-[#121418] w-[100vw] h-[100vh] flex justify-center items-center'>
-      <div className='w-[90%] sm:w-[400px] pl-0 ml-0 h-[400px] sm:pl-0 sm:ml-9 mt-10 relative'>
+    <div className='bg-[#fffbfb] w-[100vw] h-[100vh] flex justify-center items-center text-black'>
+      <div className=' w-[90%] sm:w-[400px] pl-0 ml-0 h-[400px] sm:pl-0 sm:ml-9 mt-10 relative'>
         <div className='absolute -top-7 left-0'>
-          <h3 className=' text-[25px] font-bold tracking-wider text-[#fff]'>Register</h3>
-          <p className='text-[#fff] text-[12px] tracking-wider font-medium'>Have Account ? <Link className='text-[rgba(0,195,154,1)] underline' to="/login">Sign in</Link></p>
+          <h3 className=' text-[25px] font-bold tracking-wider text-[#000]'>Register</h3>
+          <p className='text-[#000] text-[12px] tracking-wider font-medium'>Have Account ? <Link className='text-[rgba(0,195,154,1)] underline' to="/login">Sign in</Link></p>
         </div>
         <form className='flex flex-col gap-y-3 mt-[12%]' onSubmit={handleOnSubmit}>
           <div className='flex gap-x-2 w-[100%]'>
@@ -113,19 +113,7 @@ function Regsiter() {
             </div>
             <p style={{ display: isLoading ? "none" : "block" }} className='test-[#fff]'>Regsiter</p>
           </button>
-          <p className='text-[#fff] text-center sm:-ml-8'>/</p>
-          <GoogleLogin
-            clientId={process.env.REACT_APP_CLIENT_ID}
-            render={(renderProps) => (
-              <button style={{ borderImage: "linear-gradient(to right, rgba(0,195,154,1) 50%, rgba(224,205,115,1) 80%)", borderImageSlice: "1" }} onClick={renderProps.onClick} disabled={renderProps.disabled} aria-label="Continue with google" className="focus:ring-2 focus:ring-offset-1   py-3.5 px-4 border rounded-lg  flex items-center w-[100%]  sm:w-[96.3%]" disableElevation={true} disableFocusRipple={true}>
-                <img src="https://tuk-cdn.s3.amazonaws.com/can-uploader/sign_in-svg2.svg" alt="google" />
-                <p className="text-[base] font-medium ml-4 text-[#fff]">Continue with Google</p>
-              </button>
-            )}
-            onSuccess={googleSuccess}
-            onFailure={googleFailure}
-            cookiePolicy={'single_host_origin'}
-          />
+          
         </form>
       </div>
     </div>

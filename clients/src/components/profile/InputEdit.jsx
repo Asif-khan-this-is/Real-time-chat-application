@@ -10,8 +10,8 @@ function InputEdit({ type, handleChange, input, handleSubmit }) {
   }
   return (
     <>
-      <div className='flex flex-col py-4 mt-4 bg-[#ffff] shadow-md px-4 gap-y-3'>
-        <p className='text-[12px] text-[#166e48] font-medium tracking-wide'>Your name</p>
+      <div className='ml-3 rounded-sm mr-2 flex flex-col py-4 mt-4 bg-[#ffff] shadow-md px-4 gap-y-3 '>
+        <p className='text-[12px] text-[#166e48] font-medium tracking-wide'>Your Name</p>
         {
           !editable ?
 

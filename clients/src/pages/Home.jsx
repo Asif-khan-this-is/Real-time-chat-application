@@ -68,12 +68,12 @@ function Home() {
   return (
     <>
 
-      <div className="bg-[#282C35!] scrollbar-hide z-10 h-[100vh]  lg:w-[90%] lg:mx-auto overflow-y-hidden shadow-2xl">
+      <div className=" rounded-xl mt-1 shadow-lg scrollbar-hide z-10 h-[99vh] py-2 lg:w-[90%] lg:mx-auto overflow-y-hidden shadow-2xl">
 
-        <div className='flex'>
+        <div className=' flex '>
           {
             !showProfile ?
-              <div className="md:flex md:flex-col min-w-[360px] h-[100vh] md:h-[98.6vh] bg-[#ffff] relative">
+              <div className=" pb-4 pt-1 md:flex md:flex-col min-w-[360px] h-[100vh] md:h-[98.6vh] bg-[#ffff] relative">
 
                 <div className='h-[61px] px-4'>
                   <div className='flex'>

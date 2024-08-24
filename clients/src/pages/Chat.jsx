@@ -101,8 +101,8 @@ function Chat(props) {
     <>
       {
         activeChat ?
-          <div className={props.className}>
-            <div className='flex justify-between items-center px-5 bg-[#ffff] w-[100%]'>
+          <div className={props.className }  >
+            <div className='  flex justify-between items-center px-5 py-3 bg-[#ffff] w-[98.2%] ml-2 mr-2 mt-2 shadow-lg rounded-xl'>
               <div className='flex items-center gap-x-[10px]'>
                 <div className='flex flex-col items-start justify-center'>
                   <h5 className='text-[17px] text-[#2b2e33] font-bold tracking-wide'>{getChatName(activeChat, activeUser)}</h5>
@@ -147,7 +147,7 @@ function Chat(props) {
                         setTyping(false)
                       }
                     }, time)
-                  }} className='focus:outline-0 w-[100%] bg-[#f8f9fa]' type="text" name="message" placeholder="Enter message" value={message} />
+                  }} className='focus:outline-0 w-[100%] bg-[#f8f9fa]' type="text" name="message" placeholder="Type a message" value={message} />
                 </form>
 
               </div>
@@ -162,13 +162,16 @@ function Chat(props) {
 
                     {showPicker ? <BsFillEmojiSmileFill className='w-[20px] h-[20px] text-[#ffb02e] border-[black]' /> : <BsEmojiSmile className='w-[20px] h-[20px]' />}
                   </div>
-                  <button onClick={(e) => keyDownFunction(e)} className='bg-[#f8f9fa] border-[2px] border-[#d4d4d4] text-[14px] px-2 py-[3px] text-[#9e9e9e] font-medium rounded-[7px] -mt-1'>Send</button>
+                  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" color="#000000" fill="none" className=" cursor-pointer" onClick={(e) => keyDownFunction(e)}>
+                    <path d="M21.0477 3.05293C18.8697 0.707363 2.48648 6.4532 2.50001 8.551C2.51535 10.9299 8.89809 11.6617 10.6672 12.1581C11.7311 12.4565 12.016 12.7625 12.2613 13.8781C13.3723 18.9305 13.9301 21.4435 15.2014 21.4996C17.2278 21.5892 23.1733 5.342 21.0477 3.05293Z" stroke="currentColor" stroke-width="1.5" />
+                    <path d="M11.5 12.5L15 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
                 </div>
               </div>
             </div>
           </div> :
           <div className={props.className}>
-            <div className='relative'>
+            <div className='relative border '>
               <div className='absolute top-[40vh] left-[44%] flex flex-col items-center justify-center gap-y-3'>
                 <img className='w-[50px] h-[50px] rounded-[25px]' alt="User profile" src={activeUser.profilePic} />
                 <h3 className='text-[#111b21] text-[20px] font-medium tracking-wider'>Welcome <span className='text-[#166e48] text-[19px] font-bold'> {activeUser.name}</span></h3>

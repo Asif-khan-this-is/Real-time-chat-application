@@ -19,7 +19,7 @@ function Search({ type, isLoading, searchResults, handleClick, search }) {
                     <h5 className='text-[12px] text-[#68737c] tracking-wide font-normal'>{e.email}</h5>
                   </div>
                 </div>
-                <button onClick={() => handleClick(e)} className='bg-[#0086ea] px-3 py-2 text-[10.6px] tracking-wide text-[#fff]'>Add</button>
+                <button onClick={() => handleClick(e)} className='rounded-lg bg-[#0086ea] px-3 py-2 text-[10.6px] tracking-wide text-[#fff]'>Add</button>
               </div>
             )
           }) : <span className='text-[13px]'>No results found</span>

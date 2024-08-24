@@ -96,7 +96,7 @@ function Model(props) {
 
 
       <button onClick={handleOpen}>
-        <img className='w-[40px] h-[40px] rounded-[25px]' alt="Profile Pic" src={getChatPhoto(activeChat, activeUser)} />
+        <img className=' w-[40px] h-[40px] rounded-[25px]' alt="Profile Pic" src={getChatPhoto(activeChat, activeUser)} />
 
       </button>
       {
@@ -107,6 +107,7 @@ function Model(props) {
             onClose={handleClose}
             aria-labelledby="modal-modal-title"
             aria-describedby="modal-modal-description"
+            
           >
             <Box sx={style}>
               <h5 className='text-[22px] font-semibold tracking-wide text-center text-[#111b21]'>{getChatName(activeChat, activeUser)}</h5>

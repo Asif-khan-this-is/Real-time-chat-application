@@ -75,7 +75,7 @@ function Group() {
       <button className='mt-1 transition duration-150 ease-in-out' onClick={handleOpen}>
 
         <div className='flex justify-start border-r-2'>
-          <button className='text-[11px] font-normal tracking-wide flex items-center gap-x-1 bg-[#f6f6f6] text-[#1f2228] py-1 -mb-7 mt-2  px-2'>New Group <BsPlusLg /></button>
+          <button className='rounded-xl text-[11px] font-normal tracking-wide flex items-center gap-x-1 bg-[#f6f6f6] text-[#1f2228] py-2 -mb-7 mt-1  px-4'>New Group <BsPlusLg /></button>
         </div>
       </button>
       <Modal
@@ -84,13 +84,13 @@ function Group() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
       >
-        <Box sx={style}>
-          <h5 className='shadow-lg text-[18px] text-[#111b21] font-medium text-center'>Create A Group</h5>
+        <Box sx={style} className='shadow-lg rounded-xl'>
+          <h5 className=' text-[18px] text-[#111b21] font-medium text-center'>Create A Group</h5>
 
           <form onSubmit={(e) => e.preventDefault()} className='flex flex-col gap-y-3 mt-3'>
 
-            <input onChange={(e) => setChatName(e.target.value)} className="border-[#c4ccd5] border-[1px] text-[13.5px] py-[4px] px-2 w-[100%]" type="text" name="chatName" placeholder="Group Name" required />
-            <input onChange={handleFormSearch} className="border-[#c4ccd5] border-[1px] text-[13.5px] py-[4px] px-2 w-[100%]" type="text" name="users" placeholder="add users" />
+            <input onChange={(e) => setChatName(e.target.value)} className="border-[#c4ccd5] border-[1px] text-[13.5px] py-[4px] px-2 w-[100%] rounded-lg" type="text" name="chatName" placeholder="Group Name" required />
+            <input onChange={handleFormSearch} className="border-[#c4ccd5] border-[1px] text-[13.5px] py-[4px] px-2 w-[100%] rounded-lg " type="text" name="users" placeholder="add users" />
             <div className='flex -mt-2'>
 
               {
@@ -108,8 +108,8 @@ function Group() {
 
             <Search isLoading={isLoading} handleClick={handleClick} search={search} searchResults={searchResults} />
 
-            <div className='flex justify-end mt-3'>
-              <button onClick={handleSubmit} className='bg-[#0086ea] text-[#fff] text-[15px] font-medium px-2 py-1 tracking-wide' type='submit'>Create</button>
+            <div className='flex justify-center mt-2'>
+              <button onClick={handleSubmit} className='bg-[#0086ea] text-[#fff] text-[15px] font-medium px-2 py-1 tracking-wide rounded-xl ' type='submit'>Create</button>
             </div>
           </form>
 

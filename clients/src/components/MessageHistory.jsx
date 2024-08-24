@@ -10,7 +10,7 @@ function MessageHistory({ messages }) {
 
   return (
     <>
-      <ScrollableFeed className='scrollbar-hide'>
+      <ScrollableFeed className='mx-3  scrollbar-hide px-6 py-6'>
         {messages &&
           messages.map((m, i) => (
 

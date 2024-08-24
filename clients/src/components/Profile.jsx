@@ -34,11 +34,11 @@ function Profile(props) {
   return (
 
     <div style={{ transition: showProfile ? "0.3s ease-in-out" : "" }} className={props.className}>
-      <div className='absolute  w-[100%]'>
-        <div className='bg-[#166e48] pt-12 pb-3'>
+      <div className='rounded-xl   p-2 my-8 ml-1 mr-2 absolute  w-[100%]'>
+        <div className='bg-[rgb(209,212,211)] pt-8 rounded-xl ml-2 mr-3 pb-4  p-4'>
           <button onClick={() => dispatch(setShowProfile(false))} className='flex items-center'>
-            <IoArrowBack style={{ color: "#fff", width: "30px", height: "20px" }} />
-            <h6 className='text-[16px] text-[#fff] font-semibold'>Profile</h6>
+            <IoArrowBack style={{ color: "#414141", width: "30px", height: "20px" }} />
+            <h6 className='text-[16px] text-[#414141] font-semibold'>Profile</h6>
           </button>
         </div>
         <div className=' pt-5'>
@@ -51,7 +51,7 @@ function Profile(props) {
 
             <div className='py-5 px-4'>
               <p className='text-[10px] tracking-wide text-[#3b4a54] '>
-                This is not your username or pin. This name will be visible to your contacts
+                This name will be visible to your contacts and you can change your name anytime.
               </p>
             </div>
 
@@ -60,8 +60,8 @@ function Profile(props) {
         </div>
 
         <div onClick={logoutUser} className='flex items-center justify-center mt-5 cursor-pointer shadow-2xl'>
-          <IoMdLogOut className='text-[#e44d4d] w-[27px] h-[23px]' />
-          <h6 className='text-[17px] text-[#e44d4d] font-semibold'>Logout</h6>
+          <IoMdLogOut className='text-[#b4b3b3] w-[27px] h-[23px]' />
+          <h6 className='text-[17px] text-[#b4b3b3] font-semibold'>Logout</h6>
         </div>
       </div>
     </div>
