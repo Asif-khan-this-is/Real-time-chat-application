@@ -15,13 +15,13 @@ function Contacts() {
   }, [dispatch])
   return (
     <>
-      <div className='px-2 flex flex-col -space-y-1 overflow-y-scroll scrollbar-hide h-[76vh] pb-10  mx-3 my-4 rounded-xl shadow-md'>
+      <div className='px-2 flex flex-col -space-y-1 overflow-y-scroll scrollbar-hide h-[76vh] pb-10  mx-3 my-4 rounded-xl shadow-md gap-2'>
         {
           chats?.length > 0 ? chats?.map((e) => {
             return (
               <div onClick={() => {
                 dispatch(setActiveChat(e))
-              }} key={e._id} className={` shadow-md rounded-xl flex items-center justify-between sm:gap-x-1 md:gap-x-1 mt-5 ${activeChat._id === e._id ? "bg-[#fafafa]" : "bg-[#fff]"} cursor-pointer  py-4 px-2`}>
+              }} key={e._id} className={` shadow-md rounded-xl flex items-center justify-between sm:gap-x-1 md:gap-x-1  mt-5 ${activeChat._id === e._id ? "bg-[#fafafa]" : "bg-[#fff]"} cursor-pointer  py-4 px-2`}>
                 <div className='flex items-center gap-x-3 sm:gap-x-1 md:gap-x-3'>
                   <img className='w-12 h-12  sm:w-12 sm:h-12 rounded-[30px] shadow-lg object-cover' src={getChatPhoto(e, activeUser)} alt="" />
                   <div>

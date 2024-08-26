@@ -1,66 +1,64 @@
-import React from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import { GoogleLogin } from "react-google-login"
-import { gapi } from "gapi-script"
-import { useEffect } from 'react'
-import { googleAuth, registerUser } from '../apis/auth'
-import { useState } from 'react'
-import { BsEmojiLaughing, BsEmojiExpressionless } from "react-icons/bs"
+import React, { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from "react-google-login";
+import { gapi } from "gapi-script";
+import { googleAuth, registerUser, validUser } from '../apis/auth';
+import { BsEmojiLaughing, BsEmojiExpressionless } from "react-icons/bs";
 import { toast } from 'react-toastify';
-import { validUser } from '../apis/auth'
+
 const defaultData = {
   firstname: "",
   lastname: "",
   email: "",
   password: ""
-}
-function Regsiter() {
-  const [formData, setFormData] = useState(defaultData)
-  const [isLoading, setIsLoading] = useState(false)
-  const [showPass, setShowPass] = useState(false)
-  const pageRoute = useNavigate()
+};
+
+function Register() {
+  const [formData, setFormData] = useState(defaultData);
+  const [isLoading, setIsLoading] = useState(false);
+  const [showPass, setShowPass] = useState(false);
+  const pageRoute = useNavigate();
+
   const handleOnChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value })
-  }
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
   const handleOnSubmit = async (e) => {
-    e.preventDefault()
-    setIsLoading(true)
+    e.preventDefault();
+    setIsLoading(true);
     if (formData.email.includes("@") && formData.password.length > 6) {
-      const { data } = await registerUser(formData)
+      const { data } = await registerUser(formData);
       if (data?.token) {
-        localStorage.setItem("userToken", data.token)
-        toast.success("Succesfully Registered😍")
-        setIsLoading(false)
-        pageRoute("/chats")
-
+        localStorage.setItem("userToken", data.token);
+        toast.success("Successfully Registered 😍");
+        setIsLoading(false);
+        pageRoute("/chats");
+      } else {
+        setIsLoading(false);
+        toast.error("Invalid Credentials!");
       }
-      else {
-        setIsLoading(false)
-        toast.error("Invalid Credentials!")
-      }
+    } else {
+      setIsLoading(false);
+      toast.warning("Provide valid Credentials!");
+      setFormData({ ...formData, password: "" });
     }
-    else {
-      setIsLoading(false)
-      toast.warning("Provide valid Credentials!")
-      setFormData({ ...formData, password: "" })
-    }
-
-  }
+  };
 
   const googleSuccess = async (res) => {
     if (res?.profileObj) {
-      setIsLoading(true)
-      const response = await googleAuth({ tokenId: res.tokenId })
-      setIsLoading(false)
+      setIsLoading(true);
+      const response = await googleAuth({ tokenId: res.tokenId });
+      setIsLoading(false);
       if (response.data.token) {
-        localStorage.setItem("userToken", response.data.token)
-        pageRoute("/chats")
+        localStorage.setItem("userToken", response.data.token);
+        pageRoute("/chats");
       }
     }
-  }
+  };
+
   const googleFailure = (error) => {
-    toast.error("Something Went Wrong.Try Agian!")
-  }
+    toast.error("Something went wrong. Try again!");
+  };
 
   useEffect(() => {
     const initClient = () => {
@@ -71,53 +69,94 @@ function Regsiter() {
     };
     gapi.load('client:auth2', initClient);
     const isValid = async () => {
-      const data = await validUser()
+      const data = await validUser();
       if (data?.user) {
-        window.location.href = "/chats"
+        window.location.href = "/chats";
       }
-    }
-    isValid()
-  }, [])
+    };
+    isValid();
+  }, []);
+
   return (
-    <div className='bg-[#fffbfb] w-[100vw] h-[100vh] flex justify-center items-center text-black'>
-      <div className=' w-[90%] sm:w-[400px] pl-0 ml-0 h-[400px] sm:pl-0 sm:ml-9 mt-10 relative'>
-        <div className='absolute -top-7 left-0'>
-          <h3 className=' text-[25px] font-bold tracking-wider text-[#000]'>Register</h3>
-          <p className='text-[#000] text-[12px] tracking-wider font-medium'>Have Account ? <Link className='text-[rgba(0,195,154,1)] underline' to="/login">Sign in</Link></p>
+    <div className='w-[100vw] h-[100vh] flex'>
+      {/* Left Side - Welcome Section */}
+      <div className='w-[50%] h-[100%] flex justify-center items-center bg-gradient-to-r from-white via-gray-100 to-gray-100 '>
+        <div className='text-center p-8'>
+          <h1 className='text-4xl font-bold text-black mb-4'>Join Us Today !</h1>
+          <p className='text-black text-lg'>Create an account to get started with us.</p>
         </div>
-        <form className='flex flex-col gap-y-3 mt-[12%]' onSubmit={handleOnSubmit}>
-          <div className='flex gap-x-2 w-[100%]'>
-            <input onChange={handleOnChange} className='bg-[#222222] h-[50px] pl-3 text-[#ffff] w-[49%] sm:w-[47%]' type="text" name="firstname" placeholder='First Name' value={formData.firstname} required />
-            <input onChange={handleOnChange} className='bg-[#222222] h-[50px] pl-3 text-[#ffff] w-[49%] sm:w-[47%]' type="text" name="lastname" placeholder='Last Name' value={formData.lastname} required />
+      </div>
+
+      {/* Right Side - Register Form */}
+      <div className='w-[50%] h-[100%] flex justify-center items-center bg-gradient-to-r from-gray-100 via-gray-100 to-white bg-white'>
+        <div className='border border-gray-200 w-[80%] sm:w-[60%] p-6 h-[65%] rounded-xl shadow-lg'>
+          <div className='mb-8'>
+            <h3 className='text-2xl font-bold text-gray-900 tracking-wider'>Register Now !</h3>
+            
           </div>
-          <div>
-            <input onChange={handleOnChange} className='bg-[#222222] h-[50px] pl-3 text-[#ffff] w-[100%] sm:w-[96.3%]' type="email" name="email" placeholder="Email" value={formData.email} required />
-          </div>
-          <div className='relative flex flex-col gap-y-3'>
-            <input onChange={handleOnChange} className='bg-[#222222] h-[50px] pl-3 text-[#ffff] w-[100%] sm:w-[96.3%]' type={showPass ? "text" : "password"} name="password" placeholder="Password" value={formData.password} required />
-
-
-            {/* <button onCli type="button">
-              <BsEmojiExpressionless className='text-[#fff] absolute top-3 right-6 w-[30px] h-[25px]' />
-            </button> */}
-            {
-              !showPass ? <button type='button'><BsEmojiLaughing onClick={() => setShowPass(!showPass)} className='text-[#fff] absolute top-3 right-4 sm:right-6 w-[30px] h-[25px]' /></button> : <button type='button'> <BsEmojiExpressionless onClick={() => setShowPass(!showPass)} className='text-[#fff] absolute top-3 right-4 sm:right-6 w-[30px] h-[25px]' /></button>
-            }
-
-
-          </div>
-          <button style={{ background: "linear-gradient(90deg, rgba(0,195,154,1) 0%, rgba(224,205,115,1) 100%)" }} className='w-[100%]  sm:w-[96.3%] h-[50px] font-bold text-[#121418] tracking-wide text-[17px] relative' type='submit'>
-            <div style={{ display: isLoading ? "" : "none" }} className='absolute -top-[53px] left-[29.5%] sm:-top-[53px] sm:left-[87px]'>
-
-              <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_h9kds1my.json" background="transparent" speed="1" style={{ width: "200px", height: "160px" }} loop autoplay></lottie-player>
+          <form className='flex flex-col gap-y-3' onSubmit={handleOnSubmit}>
+              <input
+                className="w-[100%] bg-gray-100 text-gray-800 h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleOnChange}
+                name="firstname"
+                type="text"
+                placeholder='First Name'
+                value={formData.firstname}
+                required
+              />
+              <input
+                className="w-[100%] bg-gray-100 text-gray-800 h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleOnChange}
+                name="lastname"
+                type="text"
+                placeholder='Last Name'
+                value={formData.lastname}
+                required
+              />
+            <div>
+              <input
+                className="w-full bg-gray-100 text-gray-800 h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400"
+                onChange={handleOnChange}
+                name="email"
+                type="email"
+                placeholder='Email'
+                value={formData.email}
+                required
+              />
             </div>
-            <p style={{ display: isLoading ? "none" : "block" }} className='test-[#fff]'>Regsiter</p>
-          </button>
-          
-        </form>
+            <div className='relative'>
+              <input
+                className='w-full bg-gray-100 text-gray-800 h-12 px-3 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-400'
+                onChange={handleOnChange}
+                type={showPass ? "text" : "password"}
+                name="password"
+                placeholder='Password'
+                value={formData.password}
+                required
+              />
+              <button
+                type='button'
+                className='absolute top-3 right-3 text-gray-500'
+                onClick={() => setShowPass(!showPass)}
+              >
+                {showPass ? <BsEmojiExpressionless className='w-6 h-6' /> : <BsEmojiLaughing className='w-6 h-6' />}
+              </button>
+            </div>
+            <button
+              type='submit'
+              className='w-full h-12 bg-blue-500  text-white rounded-xl font-bold mt-4 p-2'
+              disabled={isLoading}
+            >
+              {isLoading ? "Loading..." : "Register"}
+            </button>
+          </form>
+          <p className='mt-6 ml-2 text-gray-600 text-sm '>
+              Already have an account? <Link className='text-blue-600 underline' to="/login">Sign in</Link>
+            </p>
+        </div>
       </div>
     </div>
-  )
+  );
 }
 
-export default Regsiter
+export default Register;
